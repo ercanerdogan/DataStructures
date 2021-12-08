@@ -36,6 +36,12 @@ namespace App
 
             linkedList.AddBefore(linkedList.Head, newNode);
 
+            foreach (var item in linkedList)
+            {
+                Console.WriteLine(item);
+
+            }
+
 
 
             Console.ReadKey();
