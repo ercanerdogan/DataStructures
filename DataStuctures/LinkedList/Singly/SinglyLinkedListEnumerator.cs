@@ -33,7 +33,7 @@ namespace DataStuctures.LinkedList.Singly
             else
             {
                 _current = _current.Next;
-                return _current.Next != null ? true : false;
+                return _current != null ? true : false;
             }
         }
 

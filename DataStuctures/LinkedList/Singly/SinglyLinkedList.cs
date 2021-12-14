@@ -7,6 +7,20 @@ namespace DataStuctures.LinkedList.Singly
 {
     public class SinglyLinkedList<T> : IEnumerable<T>
     {
+
+        public SinglyLinkedList()
+        {
+
+        }
+        public SinglyLinkedList(IEnumerable<T> collection)
+        {
+            foreach (var item in collection)
+            {
+                this.AddLast(item);
+            }
+
+
+        }
         public SinglyLinkedListNode<T> Head { get; set; }
 
         private bool isHeadNull => Head == null;
@@ -175,6 +189,41 @@ namespace DataStuctures.LinkedList.Singly
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+
+        public T RemoveFirst()
+        {
+            if (isHeadNull)
+                throw new Exception("Underflow! Nothing to remove");
+
+            var firstValue = Head.Value;
+            Head = Head.Next;
+
+            return firstValue;
+
+
+        }
+
+        public T RemoveLast()
+        {
+            if (isHeadNull)
+                throw new Exception("Underflow! Nothing to remove");
+
+            var current = Head;
+            SinglyLinkedListNode<T> prev = null;
+
+            while (current.Next != null)
+            {
+                prev = current;
+                current = current.Next;
+            }
+            var lastValue = prev.Next.Value;
+            prev.Next = null;
+
+            return lastValue;
+
+
         }
     }
 }

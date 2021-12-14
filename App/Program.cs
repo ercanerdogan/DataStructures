@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using DataStuctures.LinkedList.Singly;
 
 namespace App
@@ -6,6 +7,49 @@ namespace App
     class Program
     {
         static void Main(string[] args)
+        {
+            var rnd = new Random();
+            var inital = Enumerable.Range(1, 5).OrderBy(x => rnd.Next()).ToList();
+
+            var list = new SinglyLinkedList<int>(inital);
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+
+            }
+
+            Console.WriteLine("-----");
+
+            Console.WriteLine($"{list.RemoveFirst()} has been removed");
+            Console.WriteLine($"{list.RemoveFirst()} has been removed");
+            Console.WriteLine("-----");
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+
+            }
+
+
+            Console.WriteLine("-----");
+
+            Console.WriteLine($"{list.RemoveLast()} has been removed");
+            Console.WriteLine("-----");
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+
+            }
+
+
+            Console.ReadKey();
+
+
+        }
+
+        private static void usageSamples01()
         {
             var linkedList = new SinglyLinkedList<int>();
             linkedList.AddFirst(1);
@@ -41,11 +85,20 @@ namespace App
                 Console.WriteLine(item);
 
             }
+        }
 
+        private static void UsageSamples02()
+        {
 
+            //LINQ samples
+            var rnd = new Random();
+            var inital = Enumerable.Range(1, 10).OrderBy(x => rnd.Next()).ToList();
+
+            var linkedList2 = new SinglyLinkedList<int>(inital);
+
+            linkedList2.Where(x => x % 2 == 1).ToList().ForEach(x => Console.Write(x + " "));
 
             Console.ReadKey();
-
         }
     }
 }
