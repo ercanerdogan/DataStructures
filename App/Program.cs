@@ -8,45 +8,63 @@ namespace App
     {
         static void Main(string[] args)
         {
-            var rnd = new Random();
-            var inital = Enumerable.Range(1, 5).OrderBy(x => rnd.Next()).ToList();
+            //var rnd = new Random();
+            //var inital = Enumerable.Range(1, 5).OrderBy(x => rnd.Next()).ToList();
 
-            var list = new SinglyLinkedList<int>(inital);
+            //var list = new SinglyLinkedList<int>(inital);
 
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
+            //DisplayList(list);
 
-            }
+            //Console.WriteLine("-----");
+
+            //Console.WriteLine($"{list.RemoveFirst()} has been removed");
+            //Console.WriteLine($"{list.RemoveFirst()} has been removed");
+            //Console.WriteLine("-----");
+
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item);
+
+            //}
+
+
+            //Console.WriteLine("-----");
+
+            //Console.WriteLine($"{list.RemoveLast()} has been removed");
+            //Console.WriteLine("-----");
+
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine(item);
+
+            //}
+
 
             Console.WriteLine("-----");
 
-            Console.WriteLine($"{list.RemoveFirst()} has been removed");
-            Console.WriteLine($"{list.RemoveFirst()} has been removed");
-            Console.WriteLine("-----");
+            var list = new SinglyLinkedList<int>(new int[] { 1, 2, 3, 4, 5 });
 
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
+            list.Remove(3);
 
-            }
+            list.Remove(5);
 
+            DisplayList(list);
 
             Console.WriteLine("-----");
 
-            Console.WriteLine($"{list.RemoveLast()} has been removed");
-            Console.WriteLine("-----");
-
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-
-            }
 
 
             Console.ReadKey();
 
 
+        }
+        private static void DisplayList(SinglyLinkedList<int> list)
+        {
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+
+            }
         }
 
         private static void usageSamples01()

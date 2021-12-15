@@ -225,5 +225,43 @@ namespace DataStuctures.LinkedList.Singly
 
 
         }
+
+        public void Remove(T value)
+        {
+            if (isHeadNull)
+                throw new ArgumentException("Underflow! Nothing to remove");
+
+            if (value == null)
+                throw new ArgumentNullException();
+
+            var current = Head;
+            SinglyLinkedListNode<T> prev = null;
+
+            if (Head.Value.Equals(value))
+            {
+                if (Head.Next != null)
+                    Head = Head.Next;
+                else
+                    Head = null;
+
+                return;
+
+            }
+
+            while (current.Next != null)
+            {
+                if (current.Next.Value.Equals(value))
+                {
+                    prev = current;
+                    prev.Next = current.Next.Next;
+                    current = null;
+                    return;
+
+                }
+                current = current.Next;
+            }
+
+            throw new ArgumentException("The value could not be found in the list");
+        }
     }
 }
